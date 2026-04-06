@@ -47,6 +47,20 @@ def seo_audit(url: str, keyword: str = ""):
         if missing_alt > 0:
             score -= 10
 
+        recommendations = []
+
+        if title == "Missing":
+            recommendations.append("Add a proper title tag")
+
+        if description == "Missing":
+            recommendations.append("Add a meta description")
+
+        if len(h1_tags) == 0:
+            recommendations.append("Add at least one H1 tag")
+
+        if missing_alt > 0:
+            recommendations.append("Add ALT text to all images")
+
         return {
             "success": True,
             "data": {
@@ -56,6 +70,7 @@ def seo_audit(url: str, keyword: str = ""):
                 "h1_tags": h1_tags,
                 "images_without_alt": missing_alt,
                 "keyword_found": keyword_found,
+                "recommendations": recommendations,
                 "seo_score": score
             }
         }
