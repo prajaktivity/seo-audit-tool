@@ -7,6 +7,6 @@ app.include_router(seo.router)
 app.include_router(keyword.router)
 
 
-@app.get("/")
+ @app.get("/")
 def home():
     return {"message": "SEO Audit API 🚀"}
