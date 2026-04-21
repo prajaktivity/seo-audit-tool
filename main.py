@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from routes import seo, keyword
 from routes import recommendations
+from routes import brokenLinks
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -16,6 +17,7 @@ app.add_middleware(
 app.include_router(seo.router)
 app.include_router(keyword.router)
 app.include_router(recommendations.router)
+app.include_router(brokenLinks.router)
 
 
 @app.get("/")
